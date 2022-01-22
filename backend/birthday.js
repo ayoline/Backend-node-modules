@@ -3,16 +3,16 @@ const router = express.Router();
 const jsonUsers = require('./users.json');
 
 router.get('/birthday', function (req, res) {
-    const month = req.query.value;
-    console.log(month);
+    let month = req.query.value;
+
+    if (month > 0 && month < 10) {
+        month = '0' + month;
+    }
 
     const filteredEmployees = jsonUsers.filter((element) => {
-        return element.nascimento.includes('/' + month + '/');
+        return element.birthday.includes('/' + month + '/');
     });
 
-    filteredEmployees.sort(
-        (a, b) => Number(a.line) > Number(b.line) ? 1 : -1
-    );
     filteredResponse(filteredEmployees, res);
 });
 

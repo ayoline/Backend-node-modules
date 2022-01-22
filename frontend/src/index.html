@@ -1,17 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Anderson P. Soares" />
+    <meta property="og:description" content="Exercício: Backend-Node-Modules - 19-01-22" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
 </head>
 
 <body>
 
-    <h1>Hello World!</h1>
+    <main>
+        <section id="search-box">
+            <p>FILTER BY:</p>
+            <select name="select" id="birthday-option">
+                <option disabled selected value="">--Birthday Month--</option>
+                <option value=1>Jan</option>
+                <option value=2>Feb</option>
+                <option value=3>Mar</option>
+                <option value=4>Apr</option>
+                <option value=5>May</option>
+                <option value=6>Jun</option>
+                <option value=7>Jul</option>
+                <option value=8>Aug</option>
+                <option value=9>Sept</option>
+                <option value=10>Oct</option>
+                <option value=11>Nov</option>
+                <option value=12>Dec</option>
+            </select>
+            <p>or</p>
+            <input id="sector-input" name="sector" type="text" placeholder="digit a sector..." />
+            <button id="btn-search">Search</button>
+        </section>
+
+        <section id="table-box">
+            <div id="table-in-table-box">
+                <table id=table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Branch-line</th>
+                        <th>Email</th>
+                        <th>Sector</th>
+                        <th>Birthday</th>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
