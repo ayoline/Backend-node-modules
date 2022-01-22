@@ -7,9 +7,8 @@ router.get('/sector', function (req, res) {
     console.log(sector);
 
     const filteredEmployees = jsonUsers.filter((element) => {
-        return element.setor.includes(sector);
+        return element.sector.toLowerCase().includes(sector.toLowerCase());
     });
-
     filteredResponse(filteredEmployees, res);
 });
 

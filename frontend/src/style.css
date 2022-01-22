@@ -80,3 +80,67 @@ th{
     width: fit-content;
     padding: 0px;
 }
+
+#add-employee-forms{
+    width: 50vw;
+    height:40vh;
+    max-width: 766px;
+    max-height: 486px;
+    background-color: white;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.8s ease;
+    top: 0px;
+    left: 25vw;
+}
+
+#add-forms{
+    width: 100%;
+    height: 100%;
+    background-color: #EDF2F4;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px #2B2D42;
+    margin-top: 2%;
+    border: thick #8D99AE;
+    margin-inline: auto;
+}
+
+#add-forms h1{
+    margin: 0px;
+}
+
+#add-forms input{
+    width: 25%;
+    margin: 2%;
+}
+
+#add-forms button{
+    color: white;
+    background-color: #3476FB;
+    width: 20%;
+    height: 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    align-self: center;
+    border: 0px;
+    border-radius: 5px;
+    margin-inline: auto;
+}
+
+#close-add-forms{
+    font-size: 1.5rem;
+    font-weight: bold;
+    align-self: flex-end;
+    color: red;
+    padding: 0px;
+    margin-right: 2%;
+    margin-bottom: 0px;
+}
+
+#btn-in-close-add-forms:hover{
+    cursor: pointer;
+}

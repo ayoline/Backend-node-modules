@@ -1,17 +1,15 @@
-const apiUrl = 'http://192.168.15.101:3000'
-const sector = 'Miscellaneous';
-
-fetch(apiUrl + `/employees/sector?value=${sector}`).then(resp => resp.text()).then(element => {
-    element = JSON.parse(element);
-    console.log(element);
-});
-// 
-// 
-// 
-// 
-// 
+const apiUrl = 'http://192.168.151.170:3000'
 
 loadTableOrderByBranchLine();
+
+const btnAddEmployee = document.querySelector('#btn-add-employee');
+btnAddEmployee.onclick = function () { showForms() };
+
+const btnCloseAddForms = document.querySelector('#btn-in-close-add-forms');
+btnCloseAddForms.innerHTML = "X";
+btnCloseAddForms.onclick = function () { closeForms() }
+
+const addEmployeeForms = document.querySelector('#add-employee-forms');
 
 const sectorInput = document.querySelector('#sector-input');
 const birthdayMonthSelected = document.querySelector('#birthday-option');
@@ -42,15 +40,14 @@ birthdayMonthSelected.onchange = function () {
 }
 
 sectorInput.addEventListener('input', function () {
-    triggersTheSearch(sectorInput, filterByInputName);
+    triggersTheSearch(sectorInput, filterByInput);
 });
 
 btnSearch.onclick = function () {
-    const inputName = "sector";
     const inputValue = sectorInput.value;
 
     if (inputValue) {
-        filterByInputName(inputValue, inputName);
+        filterByInput(inputValue, inputName);
     } else {
         alert("Digite algum valor!");
     }
@@ -58,7 +55,6 @@ btnSearch.onclick = function () {
 
 function triggersTheSearch(_inputValue, _filterByInput) {
     const reqPart = _inputValue.value;
-    const whatIsTheInputName = birthdayMonthSelected.value;
 
     if (reqPart.length < minNumberOfCharToStartTrigger) {
         loadFirstLineTable();
@@ -69,12 +65,12 @@ function triggersTheSearch(_inputValue, _filterByInput) {
     clearTimeout(pid);
 
     pid = setTimeout(() => {
-        _filterByInput(reqPart, whatIsTheInputName);
-    }, 2000);
+        _filterByInput(reqPart);
+    }, 1000);
 }
 
-function filterByInputName(_inputValue, _inputName) {
-    fetch(`/search?${_inputName}=${_inputValue}`).then(resp => resp.text()).then(element => {
+function filterByInput(_inputValue) {
+    fetch(apiUrl + `/employees/sector?value=${_inputValue}`).then(resp => resp.text()).then(element => {
         element = JSON.parse(element);
         loadFilteredTable(element);
     });
@@ -125,18 +121,13 @@ function errorMsg(_str) {
     `;
 }
 
-// async function loadInitialTable() {
-//     const response = await fetch('/table');
-//     let names = await response.json();
+function showForms() {
+    addEmployeeForms.style.display = "block";
+    addEmployeeForms.style.visibility = "visible";
+    addEmployeeForms.style.opacity = "1";
+}
 
-//     for (let i = 0; i < names.length; i++) {
-//         const el = names[i];
-//         document.querySelector("#table").innerHTML += `
-//         <tr>
-//             <td>${el.id}</td>
-//             <td>${el.name}</td>
-//             <td>${el.email}</td>
-//         </tr>
-//     `;
-//     }
-// }
+function closeForms() {
+    addEmployeeForms.style.visibility = "hidden";
+    addEmployeeForms.style.opacity = "0";
+}
