@@ -12,4 +12,3 @@ app.use('/employees', birthday);
 app.use('/employees', sector);
 
 app.listen(port, () => console.log(`listening on port: ${port}`));
-//app.get('/', (req, res) => res.send("Hello World!!!"));

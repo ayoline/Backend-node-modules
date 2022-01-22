@@ -1,4 +1,4 @@
-const apiUrl = 'http://192.168.151.170:3000'
+const apiUrl = 'http://192.168.15.100:3000'
 
 loadTableOrderByBranchLine();
 
