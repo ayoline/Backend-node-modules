@@ -83,7 +83,7 @@ th{
 
 #add-employee-forms{
     width: 50vw;
-    height:40vh;
+    height:fit-content;
     max-width: 766px;
     max-height: 486px;
     background-color: white;
@@ -109,8 +109,8 @@ th{
     margin-inline: auto;
 }
 
-#add-forms h1{
-    margin: 0px;
+#add-forms h3{
+    margin-top: 0%;
 }
 
 #add-forms input{
@@ -125,10 +125,9 @@ th{
     height: 40px;
     font-size: 1.3rem;
     font-weight: bold;
-    align-self: center;
+    align-self: baseline;
     border: 0px;
     border-radius: 5px;
-    margin-inline: auto;
 }
 
 #close-add-forms{
@@ -144,3 +143,25 @@ th{
 #btn-in-close-add-forms:hover{
     cursor: pointer;
 }
+
+.inputs-in-add-employee-forms{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    padding: 0px;
+    flex-direction: row;
+    align-self: baseline;
+    vertical-align: bottom;
+}
+.inputs-in-add-employee-forms input {
+    height: fit-content;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.inputs-in-add-employee-forms label {
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+

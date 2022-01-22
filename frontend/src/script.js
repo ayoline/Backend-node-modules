@@ -5,6 +5,20 @@ loadTableOrderByBranchLine();
 const btnAddEmployee = document.querySelector('#btn-add-employee');
 btnAddEmployee.onclick = function () { showForms() };
 
+const inputAddName = document.querySelector('#add-name-input');
+const inputAddBranch = document.querySelector('#add-branch-input');
+const inputAddEmail = document.querySelector('#add-email-input');
+const inputAddSector = document.querySelector('#add-sector-input');
+const inputAddDate = document.querySelector('#add-date-input');
+
+const btnAddConfirm = document.querySelector('#btn-add-confirm');
+btnAddConfirm.onclick = function () {
+    if (inputAddName.value && inputAddBranch.value && inputAddEmail.value && inputAddSector.value && inputAddDate.value) {
+        saveNewEmployeeOnJSON();
+    } else {
+        alert('Please fill in all fields!');
+    }
+}
 const btnCloseAddForms = document.querySelector('#btn-in-close-add-forms');
 btnCloseAddForms.innerHTML = "X";
 btnCloseAddForms.onclick = function () { closeForms() }
@@ -16,6 +30,25 @@ const birthdayMonthSelected = document.querySelector('#birthday-option');
 const btnSearch = document.querySelector('#btn-search');
 let pid = 0;
 const minNumberOfCharToStartTrigger = 1;
+
+function saveNewEmployeeOnJSON() {
+    const element = [];
+    const dateFormated = new Date(inputAddDate.value).toLocaleDateString('pt-BR', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+    });
+
+    element.name = inputAddName.value;
+    element.branch = inputAddBranch.value;
+    element.email = inputAddEmail.value;
+    element.sector = inputAddSector.value;
+    element.birthday = dateFormated;
+
+    console.log(element);
+    //invoicesList.push(element);
+
+}
 
 function loadTableOrderByBranchLine() {
     const line = true;
