@@ -8,17 +8,13 @@ router.post('/savedata', function (req, res) {
     let dataFromClient = req.body;
     console.log(dataFromClient);
 
-    var max = Math.max(...jsonUsers.id);
+    dataFromClient.id = (jsonUsers.length + 1);
+    jsonUsers.push(dataFromClient);
 
-    console.log(max);
-    dataFromClient.id = max;
-    console.log(dataFromClient);
-    // jsonUsers.push(dataFromClient);
-
-    // fs.writeFile('users.json', JSON.stringify(jsonUsers), function (err) {
-    //     if (err) throw err;
-    //     console.log('Replaced!');
-    // });
+    fs.writeFile('users.json', JSON.stringify(jsonUsers), function (err) {
+        if (err) throw err;
+        res.json(dataFromClient);
+    });
 });
 
 module.exports = router

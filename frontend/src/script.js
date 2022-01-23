@@ -1,4 +1,4 @@
-const apiUrl = 'http://192.168.15.100:3000'
+const apiUrl = 'http://192.168.15.101:3000'
 
 loadTableOrderByBranchLine();
 
@@ -57,8 +57,13 @@ function saveEmployeeOnServer(_element) {
 
     fetch(apiUrl + '/save/savedata', requestOptions).then(resp => resp.text()).then(el => {
         el = JSON.parse(el);
+        console.log(el);
         if (!el.error) {
-            console.log('ok')
+            const addedEmployee = [];
+
+            closeForms();
+            addedEmployee.push(el)
+            loadFilteredTable(addedEmployee);
         } else {
             console.log('damn!');
         }
