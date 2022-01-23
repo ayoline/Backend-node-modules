@@ -14,7 +14,7 @@ const inputAddDate = document.querySelector('#add-date-input');
 const btnAddConfirm = document.querySelector('#btn-add-confirm');
 btnAddConfirm.onclick = function () {
     if (inputAddName.value && inputAddBranch.value && inputAddEmail.value && inputAddSector.value && inputAddDate.value) {
-        saveNewEmployeeOnJSON();
+        saveNewEmployee();
     } else {
         alert('Please fill in all fields!');
     }
@@ -31,8 +31,8 @@ const btnSearch = document.querySelector('#btn-search');
 let pid = 0;
 const minNumberOfCharToStartTrigger = 1;
 
-function saveNewEmployeeOnJSON() {
-    const element = [];
+function saveNewEmployee() {
+    const element = {};
     const dateFormated = new Date(inputAddDate.value).toLocaleDateString('pt-BR', {
         year: 'numeric',
         month: 'numeric',
@@ -45,9 +45,24 @@ function saveNewEmployeeOnJSON() {
     element.sector = inputAddSector.value;
     element.birthday = dateFormated;
 
-    console.log(element);
-    //invoicesList.push(element);
+    saveEmployeeOnServer(element);
+}
 
+function saveEmployeeOnServer(_element) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(_element)
+    };
+
+    fetch(apiUrl + '/save/savedata', requestOptions).then(resp => resp.text()).then(el => {
+        el = JSON.parse(el);
+        if (!el.error) {
+            console.log('ok')
+        } else {
+            console.log('damn!');
+        }
+    });
 }
 
 function loadTableOrderByBranchLine() {

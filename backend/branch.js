@@ -5,17 +5,13 @@ const jsonUsers = require('./users.json');
 router.get('/branch', function (req, res) {
     const line = req.query.value;
     const filteredEmployees = jsonUsers;
-    console.log(line);
 
     if (line) {
-
         filteredEmployees.sort(
             (a, b) => Number(a.branch) > Number(b.branch) ? 1 : -1
         );
-
         filteredResponse(filteredEmployees, res);
     }
-
 });
 
 function filteredResponse(filteredJSON, res) {
