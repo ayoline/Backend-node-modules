@@ -20,7 +20,7 @@ function filteredResponse(filteredJSON, res) {
     if (filteredJSON.length > 0) {
         res.json(filteredJSON);
     } else {
-        res.send({ error: true, msg: "NENHUM RESULTADO ENCONTRADO" });
+        res.status(404).send({ error: true, msg: "NENHUM RESULTADO ENCONTRADO" });
     }
 }
 
